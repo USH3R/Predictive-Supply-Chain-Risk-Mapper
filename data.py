@@ -1,5 +1,5 @@
 # data.py - US Predictive Supply Chain Risk Mapper
-# Modular interface for fetching supply chain data from SQL, Neo4j, and APIs
+# Added modular interface for fetching supply chain data from SQL, Neo4j, and APIs
 
 import pandas as pd
 from sqlalchemy import create_engine
