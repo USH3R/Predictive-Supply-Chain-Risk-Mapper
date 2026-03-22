@@ -8,6 +8,26 @@ plotly>=6.0.0
 pandas>=3.0.0
 numpy>=2.0.0
 sqlalchemy>=2.0.0  # For SQL connections
+neo4j>=5.10.0      # For Neo4j connections
+
+# ML / predictive modeling
+scikit-learn>=1.8.0
+
+# Optional for API requests
+requests>=2.32.0
+
+# Optional utilities
+retrying>=1.4.0
+nest-asyncio>=1.6.0# requirements.txt - US Predictive Supply Chain Risk Mapper
+
+# Dash framework for dashboard
+dash==4.0.0
+plotly>=6.0.0
+
+# Data handling
+pandas>=3.0.0
+numpy>=2.0.0
+sqlalchemy>=2.0.0  # For SQL connections
 
 # ML / predictive modeling
 scikit-learn>=1.8.0
