@@ -95,13 +95,13 @@ By combining predictive modeling and interactive dashboards, this tool could str
 
 ✅ **Proposed updated repo structure after modular expansion**
 U.S.-Predictive-Supply-Chain-Risk-Mapper/
-│
-├─ run.sh
-├─ requirements.txt
-├─ README.md
-├─ app.py                  # Main dashboard
-├─ data.py                 # Data loading: SQL / Neo4j / APIs
-├─ model.py                # Predictive model
-├─ utils.py (optional)     # Helper functions
-└─ assets/                 # Charts, logos, static files
+│         
+├─ run.sh         
+├─ requirements.txt         
+├─ README.md         
+├─ app.py                           # Main dashboard         
+├─ data.py                          # Data loading: SQL / Neo4j / APIs         
+├─ model.py                         # Predictive model         
+├─ utils.py (optional)              # Helper functions         
+└─ assets/                          # Charts, logos, static files         
 
