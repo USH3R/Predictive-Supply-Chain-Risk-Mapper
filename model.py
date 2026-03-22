@@ -1,10 +1,27 @@
 # model.py
-# Placeholder for predictive supply chain risk model
+# Predictive model placeholder for US Predictive Supply Chain Risk Mapper
 
-def predict_risk(data):
+from sklearn.ensemble import RandomForestRegressor
+import pandas as pd
+
+# ----------------------------
+# Train dummy model
+# ----------------------------
+def train_model(df, features, target):
     """
-    Accepts a dataframe and returns a new dataframe with predicted risk.
-    Currently, this is a dummy function that returns the original risk_score.
+    Train a dummy model (RandomForest placeholder)
     """
-    data['predicted_risk'] = data['risk_score']  # Placeholder logic
-    return data
+    model = RandomForestRegressor(n_estimators=10, random_state=42)
+    model.fit(df[features], df[target])
+    return model
+
+# ----------------------------
+# Predict risk
+# ----------------------------
+def predict_risk(df):
+    """
+    Adds a 'predicted_risk' column.
+    Currently a placeholder: copies risk_score.
+    """
+    df['predicted_risk'] = df['risk_score']  # placeholder
+    return df
