@@ -1,127 +1,76 @@
-# data.py - US Predictive Supply Chain Risk Mapper
+# data.py - Data handling for US Predictive Supply Chain Risk Mapper
+# Load and preprocess data from SQL, Neo4j, or APIs
 
 import pandas as pd
 
 # ---------- SQL Example Placeholder ----------
-def fetch_sql_data(connection_string: str, query: str) -> pd.DataFrame:
+def load_sql_data():
     """
-    Fetch data from a SQL database.
-    Replace with actual SQL connection logic (e.g., sqlalchemy.create_engine).
+    Connects to a SQL database and retrieves supply chain data.
+    Replace with real connection string and query.
     """
-    print("Fetching SQL data...")
-    # Example placeholder dataframe
-    data = pd.DataFrame({
-        "Vendor": ["Vendor A", "Vendor B"],
-        "Risk Score": [0.2, 0.7],
-        "Category": ["Logistics", "Supplier"]
+    # Example placeholder
+    # import sqlalchemy
+    # engine = sqlalchemy.create_engine("postgresql://user:pass@host:port/dbname")
+    # df = pd.read_sql("SELECT * FROM suppliers", engine)
+    
+    # Temporary placeholder
+    df = pd.DataFrame({
+        "Supplier": ["Supplier A", "Supplier B", "Supplier C"],
+        "Region": ["North", "South", "East"],
+        "Risk Score": [0.2, 0.5, 0.7],
+        "Lead Time": [5, 10, 7]
     })
-    return data
+    return df
 
 # ---------- Neo4j Example Placeholder ----------
-def fetch_neo4j_data(uri: str, user: str, password: str, cypher_query: str) -> pd.DataFrame:
+def load_neo4j_data():
     """
-    Fetch data from a Neo4j graph database.
-    Replace with actual Neo4j connection logic (e.g., neo4j.Driver).
+    Connects to a Neo4j graph database to retrieve supplier dependencies.
+    Replace with real connection and queries.
     """
-    print("Fetching Neo4j data...")
-    data = pd.DataFrame({
-        "Vendor": ["Vendor C"],
-        "Risk Score": [0.5],
-        "Category": ["Distribution"]
+    # Example placeholder
+    # from neo4j import GraphDatabase
+    # driver = GraphDatabase.driver(uri="bolt://host:7687", auth=("user", "pass"))
+    # with driver.session() as session:
+    #     result = session.run("MATCH (s:Supplier)-[:SUPPLIES]->(c:Company) RETURN s.name, c.name")
+    #     df = pd.DataFrame([dict(record) for record in result])
+    
+    # Temporary placeholder
+    df = pd.DataFrame({
+        "Supplier": ["Supplier A", "Supplier B"],
+        "Depends On": ["Supplier X", "Supplier Y"],
+        "Dependency Type": ["Raw Material", "Component"]
     })
-    return data
+    return df
 
 # ---------- API Example Placeholder ----------
-def fetch_api_data(api_url: str, headers: dict = None) -> pd.DataFrame:
+def load_api_data():
     """
-    Fetch data from a REST API.
-    Replace with requests.get and proper JSON parsing.
+    Fetches supply chain risk data from external APIs.
+    Replace URLs and API keys with real endpoints.
     """
-    print("Fetching API data...")
-    data = pd.DataFrame({
-        "Vendor": ["Vendor D"],
-        "Risk Score": [0.3],
-        "Category": ["Logistics"]
-    })
-    return data
-
-# ---------- Combine all data ----------
-def get_combined_data() -> pd.DataFrame:
-    """
-    Fetch and combine data from SQL, Neo4j, and APIs.
-    """
-    sql_data = fetch_sql_data("SQL_CONNECTION_STRING", "SELECT * FROM table")
-    neo4j_data = fetch_neo4j_data("bolt://localhost:7687", "user", "password", "MATCH (n) RETURN n")
-    api_data = fetch_api_data("https://example.com/api")
+    # Example placeholder
+    # import requests
+    # response = requests.get("https://api.supplychainrisk.com/data?apikey=YOUR_API_KEY")
+    # df = pd.DataFrame(response.json())
     
-    combined = pd.concat([sql_data, neo4j_data, api_data], ignore_index=True)
-    print("Combined data ready.")
-    return combined
-
-# ---------- Test fetch ----------
-if __name__ == "__main__":
-    df = get_combined_data()
-    print(df)# data.py - US Predictive Supply Chain Risk Mapper
-
-import pandas as pd
-
-# ---------- SQL Example Placeholder ----------
-def fetch_sql_data(connection_string: str, query: str) -> pd.DataFrame:
-    """
-    Fetch data from a SQL database.
-    Replace with actual SQL connection logic (e.g., sqlalchemy.create_engine).
-    """
-    print("Fetching SQL data...")
-    # Example placeholder dataframe
-    data = pd.DataFrame({
-        "Vendor": ["Vendor A", "Vendor B"],
-        "Risk Score": [0.2, 0.7],
-        "Category": ["Logistics", "Supplier"]
+    # Temporary placeholder
+    df = pd.DataFrame({
+        "Supplier": ["Supplier A", "Supplier C"],
+        "External Risk Score": [0.3, 0.6]
     })
-    return data
+    return df
 
-# ---------- Neo4j Example Placeholder ----------
-def fetch_neo4j_data(uri: str, user: str, password: str, cypher_query: str) -> pd.DataFrame:
+# ---------- Unified Data Loader ----------
+def load_data():
     """
-    Fetch data from a Neo4j graph database.
-    Replace with actual Neo4j connection logic (e.g., neo4j.Driver).
+    Combines SQL, Neo4j, and API data into a single DataFrame.
     """
-    print("Fetching Neo4j data...")
-    data = pd.DataFrame({
-        "Vendor": ["Vendor C"],
-        "Risk Score": [0.5],
-        "Category": ["Distribution"]
-    })
-    return data
+    sql_df = load_sql_data()
+    neo_df = load_neo4j_data()
+    api_df = load_api_data()
 
-# ---------- API Example Placeholder ----------
-def fetch_api_data(api_url: str, headers: dict = None) -> pd.DataFrame:
-    """
-    Fetch data from a REST API.
-    Replace with requests.get and proper JSON parsing.
-    """
-    print("Fetching API data...")
-    data = pd.DataFrame({
-        "Vendor": ["Vendor D"],
-        "Risk Score": [0.3],
-        "Category": ["Logistics"]
-    })
-    return data
-
-# ---------- Combine all data ----------
-def get_combined_data() -> pd.DataFrame:
-    """
-    Fetch and combine data from SQL, Neo4j, and APIs.
-    """
-    sql_data = fetch_sql_data("SQL_CONNECTION_STRING", "SELECT * FROM table")
-    neo4j_data = fetch_neo4j_data("bolt://localhost:7687", "user", "password", "MATCH (n) RETURN n")
-    api_data = fetch_api_data("https://example.com/api")
-    
-    combined = pd.concat([sql_data, neo4j_data, api_data], ignore_index=True)
-    print("Combined data ready.")
-    return combined
-
-# ---------- Test fetch ----------
-if __name__ == "__main__":
-    df = get_combined_data()
-    print(df)
+    # Merge SQL and API data as an example
+    merged_df = pd.merge(sql_df, api_df, on="Supplier", how="left")
+    return merged_df
