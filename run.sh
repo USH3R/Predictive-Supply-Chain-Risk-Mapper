@@ -1,5 +1,16 @@
 #!/bin/bash
-# US Predictive Supply Chain Risk Mapper - Run Script
+
+# ----------------------------------------
+# US Predictive Supply Chain Risk Mapper
+# Run Script
+#
+# This script:
+# 1. Creates a Python virtual environment
+# 2. Installs required libraries
+# 3. Starts the Dash dashboard
+#
+# Hackathon goal: one-command startup
+# ----------------------------------------
 
 echo "Setting up Python environment..."
 
