@@ -1,42 +1,55 @@
 # model.py - US Predictive Supply Chain Risk Mapper
 
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
 
-# ---------- Example function: train a predictive model ----------
-def train_risk_model(data: pd.DataFrame, target_column: str):
+# ---------- Build a sample predictive model ----------
+def build_risk_model():
     """
-    Train a RandomForest model to predict supply chain risk.
-    Returns trained model and feature scaler.
+    Build a placeholder Random Forest model pipeline.
+    Replace with real features and model tuning later.
     """
-    X = data.drop(columns=[target_column])
-    y = data[target_column]
+    pipeline = Pipeline([
+        ('scaler', StandardScaler()),
+        ('model', RandomForestRegressor(n_estimators=100, random_state=42))
+    ])
+    return pipeline
 
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
-
-    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+# ---------- Fit the model ----------
+def train_model(data: pd.DataFrame, feature_cols: list, target_col: str):
+    """
+    Train the risk prediction model.
+    """
+    model = build_risk_model()
+    X = data[feature_cols]
+    y = data[target_col]
     
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
-    model.fit(X_train, y_train)
-    
-    score = model.score(X_test, y_test)
-    print(f"Model trained. Accuracy on test set: {score:.2f}")
-    
-    return model, scaler
+    model.fit(X, y)
+    print("Model training complete.")
+    return model
 
-# ---------- Example function: predict risk ----------
-def predict_risk(model, scaler, new_data: pd.DataFrame):
+# ---------- Predict risk ----------
+def predict_risk(model, new_data: pd.DataFrame, feature_cols: list):
     """
-    Predict supply chain risk on new data using the trained model.
+    Predict risk scores using the trained model.
     """
-    X_scaled = scaler.transform(new_data)
-    predictions = model.predict(X_scaled)
-    return predictions
+    predictions = model.predict(new_data[feature_cols])
+    new_data['Predicted Risk'] = predictions
+    return new_data
 
-# ---------- Placeholder usage ----------
+# ---------- Test with dummy data ----------
 if __name__ == "__main__":
-    print("This is the model module for US Predictive Supply Chain Risk Mapper.")
-    print("Use train_risk_model() to train models and predict_risk() for predictions.")
+    # Example dummy dataset
+    df = pd.DataFrame({
+        'Feature1': [1, 2, 3],
+        'Feature2': [0.1, 0.2, 0.3],
+        'Risk Score': [0.2, 0.5, 0.7]
+    })
+    features = ['Feature1', 'Feature2']
+    target = 'Risk Score'
+    
+    model = train_model(df, features, target)
+    predictions = predict_risk(model, df, features)
+    print(predictions)
