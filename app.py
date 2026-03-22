@@ -1,5 +1,4 @@
 # app.py - US Predictive Supply Chain Risk Mapper
-# Modular Dash app with placeholders for interactive components
 
 import dash
 from dash import dcc, html, Input, Output, callback
