@@ -1,4 +1,42 @@
-# data.py - Modular data interface for US Predictive Supply Chain Risk Mapper
+# data.py - US Predictive Supply Chain Risk Mapper
+# Modular interface for supply chain data
+
+import pandas as pd
+try:
+    from mock_data import get_mock_data
+except ImportError:
+    get_mock_data = None
+
+def get_supply_data(use_mock=True) -> pd.DataFrame:
+    """
+    Returns supply chain data from multiple sources.
+    - use_mock: if True, return simulated data from mock_data.py
+    """
+    if use_mock and get_mock_data is not None:
+        return get_mock_data()
+    
+    # Placeholder for SQL data
+    sql_df = get_sql_data()
+    # Placeholder for Neo4j data
+    neo4j_df = get_neo4j_data()
+    # Placeholder for API data
+    api_df = get_api_data()
+
+    # Combine all sources
+    combined_df = pd.concat([sql_df, neo4j_df, api_df], ignore_index=True)
+    return combined_df
+
+def get_sql_data() -> pd.DataFrame:
+    # Placeholder: return empty DataFrame
+    return pd.DataFrame(columns=['vendor', 'region', 'supply_quantity', 'delivery_delay_days'])
+
+def get_neo4j_data() -> pd.DataFrame:
+    # Placeholder: return empty DataFrame
+    return pd.DataFrame(columns=['vendor', 'region', 'supply_quantity', 'delivery_delay_days'])
+
+def get_api_data() -> pd.DataFrame:
+    # Placeholder: return empty DataFrame
+    return pd.DataFrame(columns=['vendor', 'region', 'supply_quantity', 'delivery_delay_days'])# data.py - Modular data interface for US Predictive Supply Chain Risk Mapper
 import pandas as pd
 
 try:
