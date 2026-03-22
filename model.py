@@ -1,16 +1,15 @@
 # model.py - US Predictive Supply Chain Risk Mapper
-# Modular predictive model functions
+# Modular predictive model
+# Computes risk_score for given DataFrame
 
 import pandas as pd
 import numpy as np
 
 def predict_risk(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Placeholder function for risk prediction.
-    Accepts a DataFrame and returns the same DataFrame
-    with added 'risk_score' column.
+    Adds a 'risk_score' column to df based on delivery_days and issues_reported.
     """
-    df = df.copy()
-    # Simple mock risk score: random between 0 and 1
-    df['risk_score'] = np.random.rand(len(df))
+    # Simple mock formula: normalized delivery_days + issues
+    df['risk_score'] = (df['delivery_days'] / df['delivery_days'].max() +
+                        df['issues_reported'] / df['issues_reported'].max()) / 2
     return df
