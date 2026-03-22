@@ -1,4 +1,48 @@
-# model.py - US Predictive Supply Chain Risk Mapper
+# model.py - Predictive modeling for US Supply Chain Risk Mapper
+# Provides risk predictions based on supply chain data
+
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+import numpy as np
+
+# ---------- Placeholder Model ----------
+class SupplyChainRiskModel:
+    def __init__(self):
+        # Initialize a simple Random Forest model
+        # For placeholder purposes, it is not trained on real data yet
+        self.model = RandomForestRegressor(n_estimators=10, random_state=42)
+        self.trained = False
+
+    def train(self, df: pd.DataFrame):
+        """
+        Train the model on existing supply chain data.
+        Expects a DataFrame with numeric features and a 'Risk Score' column.
+        """
+        if 'Risk Score' not in df.columns:
+            raise ValueError("DataFrame must include 'Risk Score' column for training.")
+
+        # Example: numeric features only
+        features = df.select_dtypes(include=np.number).drop(columns=['Risk Score'], errors='ignore')
+        if features.empty:
+            print("No numeric features to train on. Skipping training.")
+            return
+
+        target = df['Risk Score']
+        self.model.fit(features, target)
+        self.trained = True
+        print("Model trained on placeholder data.")
+
+    def predict(self, df: pd.DataFrame) -> pd.Series:
+        """
+        Predict risk scores for given supply chain data.
+        Returns a pandas Series of predicted scores.
+        """
+        features = df.select_dtypes(include=np.number)
+        if features.empty or not self.trained:
+            # If model is not trained or no numeric features, return placeholder predictions
+            print("Returning placeholder risk scores.")
+            return pd.Series([0.5] * len(df), index=df.index)
+        return pd.Series(self.model.predict(features), index=df.index)# model.py - US Predictive Supply Chain Risk Mapper
 
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
