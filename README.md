@@ -63,7 +63,8 @@ Neo4j – graph database for supply chain relationships
 
 Docker – containerization for easy deployment
 
-Future Enhancements
+**Future Enhancements**
+
 Add real-time dark web / threat feed monitoring.
 Integrate advanced ML predictive models.
 Expand dashboard with Neo4j graph visualizations.
