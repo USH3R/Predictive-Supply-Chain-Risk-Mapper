@@ -1,50 +1,44 @@
-# model.py - Predictive ML/AI for Supply Chain Risk
+# model.py - US Predictive Supply Chain Risk Mapper
+# Modular risk prediction interface
+# Accepts a DataFrame and returns predicted risk scores
 
 import pandas as pd
 import numpy as np
 
-# ------------------------------
-# Example placeholder predictive model
-# ------------------------------
-def predict_risk(df: pd.DataFrame) -> pd.DataFrame:
+def predict_risk(df: pd.DataFrame, method="mock") -> pd.DataFrame:
     """
-    Predicts risk scores for supply chain entries in df.
-
+    Predict risk scores for a given DataFrame.
+    
     Parameters:
-        df (pd.DataFrame): DataFrame containing supply chain data with at least
-                           columns ['vendor', 'region', 'metric1', 'metric2', ...]
-
+    - df: pandas DataFrame containing supply chain data
+    - method: string, type of prediction to perform
+        - "mock": random risk scores for testing
+        - "ml_model": placeholder for a real ML/AI model
+        - "api_model": placeholder for external API-based predictions
+    
     Returns:
-        pd.DataFrame: Original DataFrame with an additional 'risk' column.
+    - DataFrame with an added 'predicted_risk' column
     """
+    if df.empty:
+        return df.copy()
+    
     df = df.copy()
     
-    # Placeholder: generate random risk score if no real model yet
-    if 'risk' not in df.columns:
-        np.random.seed(42)  # For reproducibility
-        df['risk'] = np.random.uniform(0, 10, size=len(df))
+    if method == "mock":
+        # Random values between 0 and 1 for testing
+        df["predicted_risk"] = np.random.rand(len(df))
     
-    # TODO: Replace the above with your real ML/AI predictive model
-    # e.g., trained scikit-learn or XGBoost model: model.predict(df_features)
-
+    elif method == "ml_model":
+        # Placeholder for actual ML/AI model
+        # TODO: integrate scikit-learn / XGBoost / PyTorch model here
+        df["predicted_risk"] = 0.5  # static mock value for now
+    
+    elif method == "api_model":
+        # Placeholder for calling an external AI/ML API
+        # TODO: integrate API call and return predictions
+        df["predicted_risk"] = 0.7  # static mock value for now
+    
+    else:
+        raise ValueError(f"Unknown prediction method: {method}")
+    
     return df
-
-# ------------------------------
-# Example utility function
-# ------------------------------
-def risk_summary(df: pd.DataFrame) -> dict:
-    """
-    Returns a summary of predicted risk.
-    
-    Parameters:
-        df (pd.DataFrame): DataFrame containing 'risk' column.
-    
-    Returns:
-        dict: Summary stats like mean, max, high-risk count, etc.
-    """
-    summary = {
-        "average_risk": df['risk'].mean() if 'risk' in df else None,
-        "max_risk": df['risk'].max() if 'risk' in df else None,
-        "high_risk_count": df[df['risk'] >= 8].shape[0] if 'risk' in df else 0
-    }
-    return summary
