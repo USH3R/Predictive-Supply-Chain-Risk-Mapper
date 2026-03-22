@@ -49,7 +49,7 @@ Predictive Model (Python ML, e.g., scikit-learn or simple logic)
 Dash Dashboard (Risk maps, vendor graph, score tables)
 
 
-**Minimal, hackathon-ready list for your project:**
+**Minimal, hackathon-ready:**
 
 Python – scraping, processing, predictive modeling, backend logic
 
