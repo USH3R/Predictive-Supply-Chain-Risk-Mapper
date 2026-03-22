@@ -1,5 +1,4 @@
 # model.py - US Predictive Supply Chain Risk Mapper
-# Placeholder for ML/AI models predicting supply chain risk
 
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
