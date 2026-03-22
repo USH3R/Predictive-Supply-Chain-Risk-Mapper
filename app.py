@@ -1,4 +1,5 @@
-# app.py - US Predictive Supply Chain Risk Mapper. Full modular app using data.py + model.py
+# app.py - US Predictive Supply Chain Risk Mapper
+# Full modular app using data.py + model.py with multi-vendor & trend plots
 
 from dash import Dash, dcc, html, Input, Output
 from data import get_supply_data
@@ -15,7 +16,14 @@ app.title = "US Predictive Supply Chain Risk Mapper"
 # Load and process data
 # -------------------------
 df = get_supply_data("mock")  # Pull mock data
-df = predict_risk(df)         # Add 'risk' column for visualization
+df = predict_risk(df)         # Add 'risk' column
+
+# Simulate risk trend over time for vendors
+# Create mock time series (for demonstration)
+df_trend = df.copy()
+df_trend = df_trend.loc[df_trend.index.repeat(5)]
+df_trend['day'] = list(range(1, 6)) * (len(df_trend) // 5)
+df_trend['risk_trend'] = df_trend['risk'] * (1 + 0.1 * df_trend['day'])
 
 # -------------------------
 # App Layout
@@ -34,8 +42,21 @@ app.layout = html.Div([
         multi=False
     ),
 
+    # Multi-vendor comparison dropdown
+    html.Label("Select Vendors for Comparison:"),
+    dcc.Dropdown(
+        id='vendor-dropdown',
+        options=[{'label': v, 'value': v} for v in sorted(df['vendor'].unique())],
+        value=[],
+        multi=True,
+        placeholder="Select one or more vendors"
+    ),
+
     # Bar chart of risk scores
     dcc.Graph(id="risk-bar"),
+
+    # Trend plot
+    dcc.Graph(id="risk-trend"),
 
     # Table of vendor metrics and risk
     html.H3("Vendor Risk Details"),
@@ -48,13 +69,15 @@ app.layout = html.Div([
 @app.callback(
     Output('risk-bar', 'figure'),
     Output('risk-table', 'figure'),
-    Input('region-dropdown', 'value')
+    Output('risk-trend', 'figure'),
+    Input('region-dropdown', 'value'),
+    Input('vendor-dropdown', 'value')
 )
-def update_dashboard(selected_region):
-    # Filter data if a region is selected
+def update_dashboard(selected_region, selected_vendors):
+    # Filter by region
     filtered_df = df if not selected_region else df[df['region'] == selected_region]
 
-    # Bar chart for risk scores
+    # Bar chart for risk scores (filtered by region)
     bar_fig = {
         "data": [
             {"x": filtered_df["vendor"], "y": filtered_df["risk"], "type": "bar", "name": "Risk Score"}
@@ -73,7 +96,19 @@ def update_dashboard(selected_region):
         ]
     }
 
-    return bar_fig, table_fig
+    # Risk trend plot (time series) for selected vendors
+    trend_df = df_trend if not selected_vendors else df_trend[df_trend['vendor'].isin(selected_vendors)]
+    trend_fig = {
+        "data": [
+            {"x": trend_df[trend_df['vendor'] == v]['day'],
+             "y": trend_df[trend_df['vendor'] == v]['risk_trend'],
+             "type": "line",
+             "name": v} for v in trend_df['vendor'].unique()
+        ],
+        "layout": {"title": "Vendor Risk Trends Over Time", "xaxis": {"title": "Day"}, "yaxis": {"title": "Risk"}}
+    }
+
+    return bar_fig, table_fig, trend_fig
 
 # -------------------------
 # Run the app
