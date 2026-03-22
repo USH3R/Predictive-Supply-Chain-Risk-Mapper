@@ -92,3 +92,16 @@ Actionable recommendations for mitigation.
 Visualizations for cascading risks across government dependencies.
 
 By combining predictive modeling and interactive dashboards, this tool could strengthen U.S. federal cybersecurity posture and reduce the risk of attacks similar to the SolarWinds supply chain breach.
+
+✅ **Proposed updated repo structure after modular expansion**
+U.S.-Predictive-Supply-Chain-Risk-Mapper/
+│
+├─ run.sh
+├─ requirements.txt
+├─ README.md
+├─ app.py                  # Main dashboard
+├─ data.py                 # Data loading: SQL / Neo4j / APIs
+├─ model.py                # Predictive model
+├─ utils.py (optional)     # Helper functions
+└─ assets/                 # Charts, logos, static files
+
