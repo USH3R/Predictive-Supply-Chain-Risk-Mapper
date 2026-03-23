@@ -86,13 +86,13 @@ If you are already in the correct folder, just use:
 ## Architecture Diagram
 Vendor Data (CVE feeds, APIs, GitHub leaks)
 →
-Python Scraper / Data Processor 
+Python Scraper / Data Processor (Automated Heuristic Engine)
 →
-SQL Database (Stores vendors, risk scores, dependencies)
+In-Memory Data Store (Efficient SQL-alternative for high-speed lookup)
 →
-Predictive Model (Python ML, e.g., scikit-learn or simple logic)
+Heuristic Predictive Model (Python ML logic: Weighted scoring & probability analysis)
 →
-Dash Dashboard (Risk maps, vendor graph, score tables)
+Interactive Dash UI / Dashboard (Risk maps, vendor graphs, score tables)
 
 
 **Minimal, hackathon-ready:**
