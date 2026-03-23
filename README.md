@@ -34,7 +34,7 @@ Public terminals do not automatically have this project. You must first download
 
 A. Option A — Clone with Git  
 Type:  
-git clone https://github.com/YOUR_USERNAME/REPO_NAME.git  
+git clone https://github.com/USH3R/U.S.-Predictive-Supply-Chain-Risk-Mapper.git  
 cd REPO_NAME  
 bash run.sh  
 
