@@ -10,33 +10,23 @@
 
 The **US Predictive Supply Chain Risk Mapper** is a hackathon-ready cybersecurity tool designed to help federal agencies predict supply chain risk for vendors, visualize dependencies, and provide actionable mitigation strategies. Built entirely in **Python + SQL + Dash**, this tool combines predictive modeling with interactive dashboards for real-time risk assessment.
 ---
-<u><b>How to Run the Application</b></u>
+**How to Run the Application**
 
-**1. Run in GitHub Codespaces (Recommended)**
-
-Open this repository on GitHub.
-
-Click Code → Codespaces → Create Codespace on main.
-
-Wait for the environment to load.
-
-Open the terminal inside Codespaces.
-
-Run:
-bash run.sh
-
+1. Run in GitHub Codespaces (Recommended)  
+Open this repository on GitHub.  
+Click Code → Codespaces → Create Codespace on main.  
+Wait for the environment to load.  
+Open the terminal inside Codespaces.  
+Run:           
+          - bash run.sh
 When the server starts, open the forwarded port (usually 8050) to view the dashboard.
 
-2. Run Manually Inside the Repository (Local Machine)
-
-If you downloaded or cloned the repository:
-
-Open a terminal.
-
-Navigate to the project folder.
-
-Example:
-cd US-Predictive-Supply-Chain-Risk-Mapper
+2. Run Manually Inside the Repository (Local Machine)  
+If you downloaded or cloned the repository:  
+Open a terminal.  
+Navigate to the project folder.  
+Example:  
+         cd US-Predictive-Supply-Chain-Risk-Mapper  
 
 Run the launcher:
 bash run.sh
