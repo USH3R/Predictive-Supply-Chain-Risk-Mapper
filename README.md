@@ -32,13 +32,13 @@ Open your browser and go to:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http
 3. If You Are Using a Random Public Terminal  
 Public terminals do not automatically have this project. You must first download or clone the repository.  
 
-Option A — Clone with Git  
+A. Option A — Clone with Git  
 Type:  
 git clone https://github.com/YOUR_USERNAME/REPO_NAME.git  
 cd REPO_NAME  
 bash run.sh  
 
-Option B — Download ZIP  
+B. Option B — Download ZIP  
 Click Code → Download ZIP on GitHub.  
 Extract the folder from the ZIP file. Then,  
 Open a terminal in that folder.
