@@ -43,15 +43,12 @@ Open a terminal in that folder.
 Run / Type: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bash run.sh
             
 4. Quick Start Command  
-This command is only for use inside a Terminal (like the one in Codespaces or on your Local Machine).  
-    Verify Your Location: Ensure your terminal is currently pointed at the project directory.  
+This command is only for use inside a Terminal (like the one in Codespaces, terminal, or on your local machine).  
+    Verify Your Location: Ensure your terminal is currently pointed at the project directory;  
     You should see U.S.-Predictive-Supply-Chain-Risk-Mapper in your command prompt.  
-    Run the Script:  
-    (If you have already performed the setup in steps 1, 2, or 3 and just need to restart the application), type:  
+    If you have already performed the setup in steps 1, 2, or 3 and just need to restart the application, type:   
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bash run.sh 
 
-If you are already in the correct folder, just use:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bash run.sh  
-  
 ## Features  
 1. **Vendor Risk Collection**
    - Pull CVE feeds, GitHub leaks, and other public signals.
