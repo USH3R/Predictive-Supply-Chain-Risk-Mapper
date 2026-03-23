@@ -25,44 +25,29 @@ or open the Port tab and then open forwarded port (usually 8050), to view the da
 If you downloaded or cloned the repository:  
 Open a terminal.  
 Navigate to the project folder.  
-Example:  
-         cd US-Predictive-Supply-Chain-Risk-Mapper  
+Example:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cd US-Predictive-Supply-Chain-Risk-Mapper  
+Run the launcher:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bash run.sh
+Open your browser and go to:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://localhost:8050
 
-Run the launcher:
-bash run.sh
+3. If You Are Using a Random Public Terminal  
+Public terminals do not automatically have this project. You must first download or clone the repository.  
 
-Open your browser and go to:
-http://localhost:8050
+Option A — Clone with Git  
+Type:  
+git clone https://github.com/YOUR_USERNAME/REPO_NAME.git  
+cd REPO_NAME  
+bash run.sh  
 
-3. If You Are Using a Random Public Terminal
-
-Public terminals do not automatically have this project. You must first download or clone the repository.
-
-Option A — Clone with Git
-
-git clone https://github.com/YOUR_USERNAME/REPO_NAME.git
-
-cd REPO_NAME
-
-bash run.sh
-
-Option B — Download ZIP
-
-Click Code → Download ZIP on GitHub.
-
-Extract the folder.
-
+Option B — Download ZIP  
+Click Code → Download ZIP on GitHub.  
+Extract the folder from the ZIP file. Then,  
 Open a terminal in that folder.
+Run / Type: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bash run.sh
 
-Run:
-bash run.sh
-
-4. Quick Start Command
-
-If you are already in the correct folder, just use:
-
-bash run.sh
-         
+4. Quick Start Command  
+If you are already in the correct folder, just use:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bash run.sh  
+           
 ## Features
 
 1. **Vendor Risk Collection**
