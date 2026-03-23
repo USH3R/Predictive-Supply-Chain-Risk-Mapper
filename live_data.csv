@@ -1,0 +1,27 @@
+import pandas as pd
+import random
+
+# In a real federal scenario, this would call the NVD API.
+# For your hackathon/scholarship, this script generates the "Current Intelligence".
+def generate_federal_intelligence():
+    vendors = ["SolarWinds-Alt", "Global-Secure", "Data-Bridge-Inc", "Federal-Soft", "Cyber-Guard-Systems"]
+    
+    data = []
+    for v in vendors:
+        # Simulating live data pulls
+        cves = random.randint(0, 15)
+        leaks = random.choice(["None", "1 API Key", "None", "Credentials Leak", "None"])
+        # Simple AI logic: More CVEs + Leaks = Higher Risk Score
+        risk_base = (cves * 0.05) + (0.3 if leaks != "None" else 0)
+        risk_score = round(min(risk_base, 0.99), 2)
+        
+        data.append([v, cves, leaks, risk_score])
+
+    df = pd.DataFrame(data, columns=["Vendor", "Current_CVEs", "GitHub_Leaks", "Predictive_Risk_Score"])
+    
+    # This creates the file that your Dashboard will "read"
+    df.to_csv("live_data.csv", index=False)
+    print("✅ live_data.csv has been updated with fresh intelligence.")
+
+if __name__ == "__main__":
+    generate_federal_intelligence()
