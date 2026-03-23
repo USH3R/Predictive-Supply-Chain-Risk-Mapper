@@ -1,6 +1,6 @@
 #!/bin/bash
 # run.sh - US Predictive Supply Chain Risk Mapper
-# One-command setup and run for Codespace
+# Sets up environment, installs packages, and runs the app
 
 echo "Initializing Python environment..."
 
@@ -16,10 +16,11 @@ source venv/bin/activate
 # Upgrade pip
 pip install --upgrade pip
 
-# Install all required packages
+# Install all required Python packages
 echo "Installing required Python packages..."
 pip install -r requirements.txt
 
 # Launch the Dash app
 echo "Launching the US Predictive Supply Chain Risk Mapper dashboard..."
+# Using host=0.0.0.0 so Codespaces can forward the port
 python app.py
