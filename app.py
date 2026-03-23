@@ -4,13 +4,19 @@ import pandas as pd
 import plotly.express as px
 
 # Mock Data simulating the SQL/Predictive Model output
-data = {
-    "Vendor": ["SolarWinds-Alt", "Global-Secure", "Data-Bridge-Inc", "Federal-Soft"],
-    "Current_CVEs": [2, 0, 12, 5],
-    "GitHub_Leaks": ["None", "None", "3 API Keys", "1 Credential"],
-    "Predictive_Risk_Score": [0.15, 0.05, 0.88, 0.45], # 0.88 is the "Red" trigger
-}
-df = pd.DataFrame(data)
+# --- REPLACEMENT START ---
+try:
+    # This looks for the file created by the data_engine
+    df = pd.read_csv('live_data.csv')
+except:
+    # EMERGENCY FALLBACK: If live_data.csv is missing, use this so the app doesn't crash
+    df = pd.DataFrame({
+        "Vendor": ["Fallback-System"],
+        "Current_CVEs": [0],
+        "GitHub_Leaks": ["None"],
+        "Predictive_Risk_Score": [0.0]
+    })
+# --- REPLACEMENT END ---
 
 app = dash.Dash(__name__)
 
