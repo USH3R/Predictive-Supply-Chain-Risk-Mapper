@@ -10,7 +10,7 @@
 
 The **US Predictive Supply Chain Risk Mapper** is a hackathon-ready cybersecurity tool designed to help federal agencies predict supply chain risk for vendors, visualize dependencies, and provide actionable mitigation strategies. Built entirely in **Python + SQL + Dash**, this tool combines predictive modeling with interactive dashboards for real-time risk assessment.
 ---
-<u>## How to Run the Application**<u>
+<u>## How to Run the Application##<u>
 **1. Run in GitHub Codespaces (Recommended)**
 
 Open this repository on GitHub.
