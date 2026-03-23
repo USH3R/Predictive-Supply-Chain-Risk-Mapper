@@ -18,7 +18,7 @@ Click Code → Codespaces → Create Codespace on main.
 Wait for the environment to load.  
 Open the terminal inside Codespaces.  
 Run:           
-          - bash run.sh
+&nbsp;&nbsp;&nbsp;&nbsp;bash run.sh
 When the server starts, open the forwarded port (usually 8050) to view the dashboard.
 
 2. Run Manually Inside the Repository (Local Machine)  
